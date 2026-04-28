@@ -1,0 +1,10 @@
+export { default as Home } from "./Home";
+export { default as Layout } from "./Layout";
+export { default as Contact } from "./Contact";
+export { default as Blog } from "./Blog";
+export { default as SkillsStack } from "./SkillsStack";
+export { default as Education } from "./Education";
+export { default as Experience } from "./Experience";
+export { default as Projects } from "./Projects";
+export { default as About } from "./About";
+export { default as NotFound } from "./NotFound";
