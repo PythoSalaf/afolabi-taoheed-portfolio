@@ -329,6 +329,6 @@ export const NAV = [
   { id: "projects", label: "Projects", icon: FiBriefcase },
   { id: "experience", label: "Experience", icon: AiOutlineBarChart },
   { id: "education", label: "Education", icon: FaGraduationCap },
-  { id: "blog", label: "Blog", icon: ImBlogger },
+  // { id: "blog", label: "Blog", icon: ImBlogger },
   { id: "contact", label: "Contact", icon: LuMail },
 ];

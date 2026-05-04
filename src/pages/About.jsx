@@ -5,6 +5,7 @@ import { LuMail, LuDownload } from "react-icons/lu";
 import { GiCoffeeCup } from "react-icons/gi";
 import { PROFILE } from "../components/DummyData";
 import { SectionHeader } from "../components";
+import { Link } from "react-router";
 
 function Card({ children, className = "" }) {
   return <div className={`glass rounded-xl p-5 ${className}`}>{children}</div>;
@@ -81,9 +82,13 @@ const About = () => {
               </span>
             ))}
           </div>
-          <button className="inline-flex items-center gap-2 px-4 py-2 mt-6 text-sm font-semibold border rounded-lg hover:bg-accent">
+          <a
+            href="/taoheed-afolabi-resume.pdf"
+            download
+            className="inline-flex items-center gap-2 px-4 py-2 mt-6 text-sm font-semibold border rounded-lg hover:bg-accent"
+          >
             <LuDownload className="size-4" /> Download Resume
-          </button>
+          </a>
         </Card>
       </div>
     </div>

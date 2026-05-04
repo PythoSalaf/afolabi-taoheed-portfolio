@@ -26,20 +26,20 @@ const Sidebar = ({ collapsed, onToggle, mode }) => {
   const socials = [
     {
       icon: FaGithub,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/PythoSalaf",
       label: "GitHub",
     },
     {
       icon: FaTwitter,
-      href: "https://twitter.com/yourusername",
+      href: "https://x.com/PythoSalaf",
       label: "Twitter",
     },
     {
       icon: FaLinkedin,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/in/pythosalaf/",
       label: "LinkedIn",
     },
-    { icon: FiMessageCircle, href: "/messages", label: "Messages" },
+    { icon: FiMessageCircle, href: "/contact", label: "Messages" },
   ];
 
   return (
@@ -76,7 +76,7 @@ const Sidebar = ({ collapsed, onToggle, mode }) => {
 
       {/* NAV (SCROLLABLE WHEN EXPANDED) */}
       <nav
-        className={`flex flex-col mt-4 gap-y-1 flex-1 px-2 ${
+        className={`flex flex-col mt-4 gap-y-2 flex-1 px-2 ${
           collapsed ? "overflow-visible" : "overflow-y-auto"
         }`}
       >

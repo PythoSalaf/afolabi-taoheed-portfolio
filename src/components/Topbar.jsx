@@ -1,17 +1,21 @@
-import { useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { MdOutlineWbSunny } from "react-icons/md";
+import { IoMenu } from "react-icons/io5";
+import { IoMdClose } from "react-icons/io";
 import { LuMoon } from "react-icons/lu";
 import { NAV, PROFILE } from "./DummyData";
+import { useState } from "react";
 const Topbar = ({
   mode,
   setMode,
   theme,
   setTheme,
-  onMobileOpen,
-  sidebarCollapsed,
+  // onMobileOpen,
+  // sidebarCollapsed,
 }) => {
   const location = useLocation();
-
+  const navigate = useNavigate();
+  const [toggle, setToggle] = useState();
   const title =
     NAV.find((n) => {
       if (n.id === "/") return location.pathname === "/";
@@ -25,6 +29,11 @@ const Topbar = ({
   const showFilter = current?.id === "projects";
   const tabBase = "px-3 py-1.5 text-xs font-mono rounded-md transition-colors";
   const isActiveTab = (m) => mode === m;
+
+  const handleHire = () => {
+    navigate("/contact");
+    setToggle(false);
+  };
 
   return (
     <div className="w-full h-16 border-b glass ">
@@ -70,7 +79,7 @@ const Topbar = ({
 
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 rounded-md hover:bg-accent text-muted-foreground"
+            className="hidden p-2 rounded-md md:block hover:bg-accent text-muted-foreground"
             aria-label="theme"
           >
             {theme === "dark" ? (
@@ -80,11 +89,55 @@ const Topbar = ({
             )}
           </button>
 
-          <button className="px-3 py-2 text-xs font-semibold text-white transition rounded-lg shadow-lg md:px-4 md:text-sm bg-linear-to-r from-web2 to-web3 hover:opacity-90 shadow-web3/20">
+          <button
+            className="hidden px-3 py-2 text-xs font-semibold text-white transition rounded-lg shadow-lg md:block md:px-4 md:text-sm bg-linear-to-r from-web2 to-web3 hover:opacity-90 shadow-web3/20"
+            onClick={() => navigate("/contact")}
+          >
             Hire Me
           </button>
+          <div className="flex items-center justify-center rounded-full h-9 w-9 bg-linear-to-br from-web2 to-web3 md:hidden">
+            {toggle ? (
+              <IoMdClose
+                className="font-bold size-5"
+                onClick={() => setToggle(false)}
+              />
+            ) : (
+              <IoMenu
+                className="font-bold size-5"
+                onClick={() => setToggle(true)}
+              />
+            )}
+          </div>
         </div>
       </div>
+      {toggle && (
+        <div className="absolute w-full h-screen text-white bg-black/95">
+          <div className="w-[95%] mx-auto space-y-7 mt-5">
+            {NAV.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <Link
+                  key={item.id}
+                  to={item.id}
+                  onClick={() => setToggle(!toggle)}
+                  className="relative w-full flex items-center gap-4 px-3 py-2.5 rounded-md text-sm lg:text-[15px] font-body transition-all duration-150
+      text-muted-foreground border-b-2 "
+                >
+                  <Icon className="w-5 h-5 shrink-0" />
+                  <span className="truncate">{item.label}</span>
+                </Link>
+              );
+            })}
+            <button
+              className="w-full px-3 py-2 mt-3 text-xs font-semibold text-white transition rounded-lg shadow-lg cursor-pointer md:px-4 md:text-sm bg-linear-to-r from-web2 to-web3 hover:opacity-90 shadow-web3/20"
+              onClick={handleHire}
+            >
+              Hire Me
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
