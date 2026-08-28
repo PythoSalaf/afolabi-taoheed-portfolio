@@ -43,7 +43,7 @@ const Home = () => {
             $ whoami
           </div>
           <h1 className="mt-2 text-3xl font-bold leading-tight md:text-5xl font-display">
-            <Typed text={`Hello, I'm ${PROFILE.name} — ${PROFILE.role}`} />
+            <Typed text={`Hello, I'm ${PROFILE.name} . ${PROFILE.role}`} />
           </h1>
           <p className="max-w-4xl mt-4 text-muted-foreground">{PROFILE.bio}</p>
           <div className="flex flex-wrap gap-2 mt-5">
